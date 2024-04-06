@@ -18,9 +18,15 @@ public:
 private:
     QLineEdit* lineToConvert;
     QLineEdit* convertedLine;
-    QComboBox* currencyToConvert;
-    QComboBox* convertedCurrency;
+    QComboBox* currenciesComboBox1;
+    QComboBox* currenciesComboBox2;
     QPushButton* convertButton;
     QPushButton* closeButton;
+
+    QVector<QString> currencies = {
+       "RUB",
+       "USD",
+       "TL"
+    };
 };
 #endif // CURRENCYCONVERTER_H

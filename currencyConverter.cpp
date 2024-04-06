@@ -5,18 +5,25 @@ CurrencyConverter::CurrencyConverter(QWidget *parent)
     : QWidget(parent),
     lineToConvert(new QLineEdit),
     convertedLine(new QLineEdit),
-    currencyToConvert(new QComboBox),
-    convertedCurrency(new QComboBox),
+    currenciesComboBox1(new QComboBox),
+    currenciesComboBox2(new QComboBox),
     convertButton(new QPushButton("Convert")),
     closeButton(new QPushButton("Close"))
 {
+    convertedLine->setReadOnly(true);
+
+    for (size_t i = 0; i < currencies.size(); ++i) {
+        currenciesComboBox1->addItem(currencies[i]);
+        currenciesComboBox2->addItem(currencies[i]);
+    }
+
     QHBoxLayout* layoutToConvert = new QHBoxLayout;
     layoutToConvert->addWidget(lineToConvert);
-    layoutToConvert->addWidget(currencyToConvert);
+    layoutToConvert->addWidget(currenciesComboBox1);
 
     QHBoxLayout* convertedLayout = new QHBoxLayout;
     convertedLayout->addWidget(convertedLine);
-    convertedLayout->addWidget(convertedCurrency);
+    convertedLayout->addWidget(currenciesComboBox2);
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->addLayout(layoutToConvert);
@@ -33,8 +40,8 @@ CurrencyConverter::~CurrencyConverter()
 {
     delete lineToConvert;
     delete convertedLine;
-    delete currencyToConvert;
-    delete convertedCurrency;
+    delete currenciesComboBox1;
+    delete currenciesComboBox2;
     delete convertButton;
     delete closeButton;
 }
