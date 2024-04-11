@@ -16,17 +16,20 @@ public:
     ~CurrencyConverter();
 
 private:
-    QLineEdit* lineToConvert;
+    QLineEdit* lineToConvert1;
     QLineEdit* convertedLine;
     QComboBox* currenciesComboBox1;
     QComboBox* currenciesComboBox2;
     QPushButton* convertButton;
-    QPushButton* closeButton;
 
-    QVector<QString> currencies = {
-       "RUB",
-       "USD",
-       "TL"
-    };
+    QMap<QString, double> currencies;
+
+private:
+    void connectSlots();
+    void initCurrenciesComboBoxes();
+    void setupLayout();
+
+private slots:
+    void convert();
 };
 #endif // CURRENCYCONVERTER_H
